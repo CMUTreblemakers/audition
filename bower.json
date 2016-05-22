@@ -1,0 +1,25 @@
+{
+  "name": "audition",
+  "description": "Application to schedule audition times",
+  "main": "index.php",
+  "authors": [
+    "DerekTBrown"
+  ],
+  "license": "GPL-2.0",
+  "keywords": [
+    "a",
+    "cappella"
+  ],
+  "homepage": "https://github.com/cmuacappella/audition",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "uikit": "^2.26.3"
+  }
+}

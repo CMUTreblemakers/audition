@@ -1,2 +1,13 @@
+# AUDITION CONF
+audition.json
+
+# COMPOSER
+composer.phar
+/vendor/
+
+# SASS
 .sass-cache/
 *.css.map
+
+# GOOGLE APIS
+admin/client_secrets.json
