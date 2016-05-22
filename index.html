@@ -88,14 +88,44 @@
                   <number>4</number>
                   <day>Monday</day>
                 </div>
-                <div class="audition-slot">
+                <div class="audition-slot" slotno="1">
                   <time>10:15AM - 10:30AM</time>
-                  <location>Wean 5764</location>
+                  <room>Wean 5764</room>
+                  <up>Sign Up</up>
                 </div>
             </div>
          </ul>
        </div>
     </section>
+
+    <script>
+      $(document).ready(function(){
+        $("up").on('click',function(e){
+            slot = $(this).parent(".audition-slot");
+
+            // Change Style
+              slot.addClass("loading");
+              $(this).text('Processing...');
+
+           // Request Slot From Server
+            console.log(slot.attr("slotno"));
+
+            $(".audition-schedule").fadeOut();
+            $(".audition-goodbye").fadeIn();
+        })
+      })
+    </script>
+
+    <!-- Step 4 : Goodbye Message -->
+      <section class="audition-goodbye" style="display:none;">
+        <div class="logo-block uk-width-medium-1-2 uk-container-center">
+          <center><a href="."><img src="img/logo.png" /></a></center>
+          <div class="uk-text-bold uk-text-center"> You have been scheduled for an audition on </div>
+          <div class="uk-text-center uk-text-large" style="font-size:36px; line-height:60px;">July 4th, 2016 at 10:00am</div>
+          <div class="uk-text-bold">You have been emailed a link allowing you to cancel or reschedule your audition.  If you have any questions, feel free to ask.</div>
+       </div>
+      </section>
+
 
 
   </body>
