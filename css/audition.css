@@ -1,0 +1,74 @@
+/* IAC Audition App */
+/* Audition Autofill  */
+.audition-autofill {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center; }
+  .audition-autofill .logo-block {
+    display: inline-block;
+    margin-top: 200px;
+    max-width: 600px; }
+    .audition-autofill .logo-block input[type=text] {
+      width: 100%;
+      height: 80px;
+      font-size: 60px;
+      line-height: 80px;
+      text-align: center; }
+
+/* Audition Form */
+.audition-form {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+  .audition-form .logo-block {
+    margin-top: 200px;
+    max-width: 600px; }
+    .audition-form .logo-block input[type=text] {
+      height: 32px;
+      font-size: 20px; }
+
+/* Audition Schedule */
+.audition-schedule .audition-view-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto 0 auto; }
+  .audition-schedule .audition-view-wrapper .audition-view .audition-day {
+    width: 200px;
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+    .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-day-label {
+      height: 100px;
+      margin-top: 4px;
+      padding-top: 6px;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 4px #ccc;
+      display: list-item;
+      text-align: center; }
+      .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-day-label number {
+        display: list-item;
+        font-size: 40pt; }
+      .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-day-label day, .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-day-label month {
+        display: list-item;
+        margin-bottom: 10px;
+        line-height: 1.8; }
+    .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-slot {
+      height: 60px;
+      margin-top: 4px;
+      padding-top: 6px;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 4px #ccc;
+      display: list-item;
+      text-align: center; }
+      .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-slot:hover {
+        background-color: #ddd; }
+      .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-slot time {
+        display: list-item;
+        margin-bottom: 4px; }
+      .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-slot location {
+        padding: 4px 5px;
+        font-size: 10px;
+        background-color: #ccc; }
+
+/*# sourceMappingURL=audition.css.map */

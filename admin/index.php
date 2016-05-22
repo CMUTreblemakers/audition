@@ -62,9 +62,9 @@
         $headerRowRequest = new  Google_Service_Sheets_BatchUpdateValuesRequest(array(
             "valueInputOption" => "USER_ENTERED",
             "data" => array(
-              "range" => "Schedule!A1:J1",
+              "range" => "Schedule!A1:K1",
               "majorDimension" => "ROWS",
-              "values" => array(array("Date","Start Time","End Time","Location","Andrew ID","First Name","Last Name","E-Mail Address", "Grade Level", "Major"))
+              "values" => array(array("Access Code","Date","Start Time","End Time","Location","Andrew ID","First Name","Last Name","E-Mail Address", "Grade Level", "Major"))
             )
         ));
 
@@ -83,24 +83,5 @@
       endif;
 
 ?>
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-      <!-- META -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title></title>
 
-      <!-- UIKit -->
-      <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-      <link rel="stylesheet" href="../bower_components/uikit/css/uikit.min.css" />
-      <script src="../bower_components/uikit/js/uikit.min.js"></script>
-
-      <!-- Style -->
-      <link rel="stylesheet" href="../css/audition.css"
-
-  </head>
-  <body>
     <?php echo "https://docs.google.com/spreadsheets/d/".$spreadsheetId; ?>
-  </body>
-</html>

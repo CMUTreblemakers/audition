@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+      <!-- META -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title></title>
+
+      <!-- UIKit -->
+      <script src="bower_components/jquery/dist/jquery.min.js"></script>
+      <link rel="stylesheet" href="bower_components/uikit/css/uikit.min.css" />
+      <script src="bower_components/uikit/js/uikit.min.js"></script>
+
+      <!-- Style -->
+      <link rel="stylesheet" href="css/audition.css"
+
+  </head>
+  <body>
+
+   <!-- Step 1 : Autofill Data from AndrewID -->
+     <section class="audition-autofill">
+       <div class="logo-block uk-width-medium-1-2 uk-container-center">
+         <center><a href="."><img src="img/logo.png" /></a></center>
+         <form id="autofill-andrew" class=" uk-form">
+            <div class="uk-form-row"><input type="text" placeholder="AndrewID"></div>
+        </form>
+      </div>
+     </section>
+     <script>
+        $("#autofill-andrew").submit(function(e){
+            var andrewid = $("#autofill-andrew input[type=text]").val();
+            if (andrewid){
+
+              // Get From ScottyLabs API
+              $.getJSON("http://apis.scottylabs.org/directory/v1/andrewID/"+andrewid,function(result){
+
+                console.log(result);
+
+
+                // AutoFill into Form
+                $("#audition-form input[name=andrewid]").val(result.andrewID);
+                $("#audition-form input[name=first]").val(result.first_name);
+                $("#audition-form input[name=last]").val(result.last_name);
+                $("#audition-form input[name=email]").val(result.preferred_email);
+                $("#audition-form input[name=grade]").val(result.student_class);
+                $("#audition-form input[name=major]").val(result.department);
+
+                // Transition Away
+                $(".audition-autofill").fadeOut();
+                $(".audition-form").fadeIn();
+
+              });
+            }
+            e.preventDefault();
+        })
+     </script>
+
+    <!-- Step 2 : Display Form Data -->
+    <section class="audition-form" style="display:none;">
+      <div class="logo-block uk-width-medium-1-2 uk-container-center">
+        <center><a href="."><img src="img/logo.png" /></a></center>
+        <form id="audition-form" class=" uk-form">
+           <div class="uk-form-row"><input name="andrewid" type="text" placeholder="AndrewID" style="width:100%;"></div>
+           <div class="uk-form-row"><input name="first" type="text" placeholder="First Name" style="width:48%;float: left;"><input name="last" type="text" placeholder="Last Name" style="width:48%; float:right;"></div>
+           <div class="uk-form-row"><input name="email" type="text" placeholder="E-Mail" style="width:100%;"></div>
+           <div class="uk-form-row"><center><button class="uk-button uk-button-large">Schedule an Audition</button></center></div>
+           <input name="grade" type="hidden">
+           <input name="major" type="hidden">
+       </form>
+     </div>
+    </section>
+    <script>
+       $("#audition-form").submit(function(e){
+           $(".audition-form").fadeOut();
+           $(".audition-schedule").fadeIn();
+           e.preventDefault();
+       })
+    </script>
+
+
+    <!-- Step 3 : Display Audition Schedule -->
+    <section class="audition-schedule" style="display:none;">
+        <div class="audition-view-wrapper">
+           <ul class="audition-view">
+              <div class="audition-day">
+                <div class="audition-day-label">
+                  <month>April</month>
+                  <number>4</number>
+                  <day>Monday</day>
+                </div>
+                <div class="audition-slot">
+                  <time>10:15AM - 10:30AM</time>
+                  <location>Wean 5764</location>
+                </div>
+            </div>
+         </ul>
+       </div>
+    </section>
+
+
+  </body>
+</html>
