@@ -82,18 +82,50 @@
     <section class="audition-schedule" style="display:none;">
         <div class="audition-view-wrapper">
            <ul class="audition-view">
-              <div class="audition-day">
-                <div class="audition-day-label">
-                  <month>April</month>
-                  <number>4</number>
-                  <day>Monday</day>
-                </div>
-                <div class="audition-slot" slotno="1">
-                  <time>10:15AM - 10:30AM</time>
-                  <room>Wean 5764</room>
-                  <up>Sign Up</up>
-                </div>
-            </div>
+            <?php
+
+                  require "./config.php";
+
+                  // Get Calendar Listing
+                  $sheets = new Google_Service_Sheets($client);
+                  $range = "Schedule!A:E";
+                  $documentId = $config_data["document_id"];
+                  $response = $sheets->spreadsheets_values->get($documentId, $range);
+                  $values = $response->getValues();
+
+                  // Remove Header Row
+                  array_shift($values);
+
+                  // Iterate Through Schedule
+                  $current_day = new DateTime("2016-05-22");
+                  foreach ($values as $slot => $row){
+                     $day = new DateTime($row[0]);
+
+                  if ($current_day != $day and $current_day != new DateTime("2016-05-22")){
+                     echo "</div>";
+                  }
+
+                  if ($current_day != $day):
+                      $current_day = $day;      ?>
+
+               <div class="audition-day">
+                 <div class="audition-day-label">
+                   <month><?php echo date_format($day, 'F'); ?></month>
+                   <number><?php echo date_format($day, 'd'); ?></number>
+                   <day><?php echo date_format($day, 'l'); ?></day>
+                 </div>
+
+             <?php endif; ?>
+                 <div class="audition-slot" slotno="1">
+                   <time><?php echo $row[1]; ?> - <?php echo $row[2]; ?></time>
+                   <room><?php echo $row[3]; ?></room>
+                   <up slot="<?php echo $slot; ?>">Sign Up</up>
+                 </div>
+
+             <?php
+                  }
+             ?>
+           </div>
          </ul>
        </div>
     </section>

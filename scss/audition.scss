@@ -56,12 +56,23 @@
       margin:20px auto 0 auto;
 
       .audition-view{
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+
         .audition-day{
           width:200px;
 
           list-style: none;
           padding: 0;
           margin: 0;
+          margin-left:10px;
 
           .audition-day-label{
             height:100px;

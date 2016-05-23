@@ -7,7 +7,6 @@
     // Variables To define
        $spreadsheetId = "";
 
-
     if (!file_exists("../audition.json")):
 
 
@@ -17,6 +16,7 @@
       /* Step 2 : Obtain API Access */
         $client = new Google_Client();
         $client->setAuthConfigFile('client_secrets.json');
+        $client->setApprovalPrompt('force');
         $client->setAccessType("offline");
         $client->addScope(Google_Service_Drive::DRIVE_FILE);
         $client->addScope(Google_Service_Sheets::SPREADSHEETS);
@@ -64,7 +64,7 @@
             "data" => array(
               "range" => "Schedule!A1:K1",
               "majorDimension" => "ROWS",
-              "values" => array(array("Access Code","Date","Start Time","End Time","Location","Andrew ID","First Name","Last Name","E-Mail Address", "Grade Level", "Major"))
+              "values" => array(array("Date","Start Time","End Time","Location","Access Code","Andrew ID","First Name","Last Name","E-Mail Address", "Grade Level", "Major"))
             )
         ));
 
@@ -77,7 +77,7 @@
         endif;
       else:
         $json = file_get_contents('../audition.json');
-        $data = json_decode($json);
+        $data = json_decode($json,true);
         $spreadsheetId = $data["document_id"];
 
       endif;
