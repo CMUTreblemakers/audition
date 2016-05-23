@@ -42,8 +42,6 @@
       display: flex;
       -webkit-flex-direction: row;
       flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
       -webkit-justify-content: center;
       justify-content: center; }
       .audition-schedule .audition-view-wrapper .audition-view .audition-day {
@@ -83,6 +81,8 @@
             font-size: 12px;
             color: #fff;
             background-color: #2980b9; }
+          .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-slot.selected up {
+            background-color: #27ae60; }
           .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-slot up {
             display: none; }
           .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-slot time {
@@ -100,6 +100,6 @@
   height: 100%; }
   .audition-goodbye .logo-block {
     margin-top: 200px;
-    max-width: 600px; }
+    max-width: 800px; }
 
 /*# sourceMappingURL=audition.css.map */
