@@ -24,9 +24,20 @@
   .audition-form .logo-block {
     margin-top: 200px;
     max-width: 600px; }
-    .audition-form .logo-block input[type=text] {
+    .audition-form .logo-block input[type=text], .audition-form .logo-block label {
       height: 32px;
       font-size: 20px; }
+    .audition-form .logo-block label {
+      margin-top: 10px;
+      margin-bottom: 10px; }
+    .audition-form .logo-block #beatbox {
+      margin-left: 15px;
+      transform: scale(2);
+      -ms-transform: scale(2);
+      -moz-transform: scale(2);
+      -webkit-transform: scale(2);
+      -o-transform: scale(2);
+      padding: 10px; }
 
 /* Audition Schedule */
 .audition-schedule {
@@ -64,6 +75,7 @@
           .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-day-label day, .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-day-label month {
             display: list-item;
             margin-bottom: 10px;
+            margin-top: 10px;
             line-height: 1.8; }
         .audition-schedule .audition-view-wrapper .audition-view .audition-day .audition-slot {
           height: 60px;
@@ -94,11 +106,11 @@
             background-color: #ccc; }
 
 /* Audition Goodbye */
-.audition-goodbye {
+.audition-goodbye, .audition-info {
   position: absolute;
   width: 100%;
   height: 100%; }
-  .audition-goodbye .logo-block {
+  .audition-goodbye .logo-block, .audition-info .logo-block {
     margin-top: 200px;
     max-width: 800px; }
 
