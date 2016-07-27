@@ -10,7 +10,7 @@
     if (isset($_POST['andrewid']) and isset($_POST['first']) and isset($_POST['last']) and isset($_POST['email']) and isset($_POST['grade']) and isset($_POST['major'])){
 
   // Step 2 : Get Existing User Data
-    $range = "Schedule!A:K";
+    $range = "Schedule!A:L";
     $documentId = $config_data["document_id"];
     $response = $sheets->spreadsheets_values->get($documentId, $range);
     $values = $response->getValues();
@@ -70,7 +70,7 @@
           $documentUpdate = new  Google_Service_Sheets_BatchUpdateValuesRequest(array(
               "valueInputOption" => "USER_ENTERED",
               "data" => array(
-                "range" => "Schedule!A:K",
+                "range" => "Schedule!A:L",
                 "majorDimension" => "ROWS",
                 "values" => $values
               )
