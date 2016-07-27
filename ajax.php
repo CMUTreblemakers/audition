@@ -105,6 +105,7 @@
 
               $template = '<div style="padding:50px;"><br/>'
               . $email_message  . '<br/>'
+              . 'You are signed up to audition on ' . $date . '.  If you wish to change your audition time, use the link below:' . '<br/>'
               . $url_root . $hash .'<br/>'
               . '<br/>'
               . '</div>';
