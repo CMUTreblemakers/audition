@@ -62,7 +62,7 @@
           $values[$_POST['slotno']][8] = $_POST['email'];
           $values[$_POST['slotno']][9] = $_POST['grade'];
           $values[$_POST['slotno']][10] = $_POST['major'];
-          $values[$_POST['slotno']][11] = $_POST['beatbox'];
+          $values[$_POST['slotno']][11] = isset($_POST['beatbox']) ? "yes" : "no";
 
         // Post Update to Google Drive
           array_unshift($values,$hrow); // Put Header Back On
