@@ -64,7 +64,7 @@
             "data" => array(
               "range" => "Schedule!A1:K1",
               "majorDimension" => "ROWS",
-              "values" => array(array("Date","Start Time","End Time","Location","Access Code","Andrew ID","First Name","Last Name","E-Mail Address", "Grade Level", "Major"))
+              "values" => array(array("Date","Start Time","End Time","Location","Access Code","Andrew ID","First Name","Last Name","E-Mail Address", "Grade Level", "Major", "Beatbox?"))
             )
         ));
 
