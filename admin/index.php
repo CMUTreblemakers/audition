@@ -1,8 +1,34 @@
 <?php
-    use Google\Spreadsheet\DefaultServiceRequest;
-    use Google\Spreadsheet\ServiceRequestFactory;
 
-    require '../vendor/autoload.php';
+  use Google\Spreadsheet\DefaultServiceRequest;
+  use Google\Spreadsheet\ServiceRequestFactory;
+
+  require '../vendor/autoload.php';
+  require '../group/conf.php';
+
+?>
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+      <!-- META -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title><?php echo $group_name; ?> - Audition</title>
+
+      <!-- UIKit -->
+      <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+      <link rel="stylesheet" href="../bower_components/uikit/css/uikit.min.css" />
+      <script src="../bower_components/uikit/js/uikit.min.js"></script>
+      <script src="../js/urlParam.js"></script>
+
+      <!-- Style -->
+      <link rel="stylesheet" href="../css/audition.css" />
+
+  </head>
+  <body>
+
+<?php
 
     // Variables To define
        $spreadsheetId = "";
@@ -62,9 +88,9 @@
         $headerRowRequest = new  Google_Service_Sheets_BatchUpdateValuesRequest(array(
             "valueInputOption" => "USER_ENTERED",
             "data" => array(
-              "range" => "Schedule!A1:K1",
+              "range" => "Schedule!A1:L1",
               "majorDimension" => "ROWS",
-              "values" => array(array("Date","Start Time","End Time","Location","Access Code","Andrew ID","First Name","Last Name","E-Mail Address", "Grade Level", "Major", "Beatbox?"))
+              "values" => array(array("Date","Start Time","End Time","Location","Access Code","Andrew ID","First Name","Last Name","E-Mail Address", "Grade Level", "Major","Beatbox?"))
             )
         ));
 
@@ -84,4 +110,20 @@
 
 ?>
 
-    <?php echo "https://docs.google.com/spreadsheets/d/".$spreadsheetId; ?>
+
+
+
+    <!-- Step 4 : Goodbye Message -->
+      <section class="audition-info">
+        <div class="logo-block uk-width-medium-1-2 uk-container-center">
+          <center><a href="."><img src="../group/logo.png" /></a></center>
+          <div class="uk-text-bold uk-text-center">Your audition form has been configured.  You can view your audition results at the link below:</div>
+        </br>
+          <div class="uk-text-bold uk-text-center"><a href="<?php echo "https://docs.google.com/spreadsheets/d/".$spreadsheetId; ?>"><?php echo "https://docs.google.com/spreadsheets/d/".$spreadsheetId; ?></a></div>
+       </div>
+      </section>
+
+
+
+  </body>
+</html>
