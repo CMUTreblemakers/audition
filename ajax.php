@@ -2,6 +2,7 @@
 
   /* Handles AJAX Requests for Scheduling */
   require "./config.php";
+  require "./group/conf.php";
 
   $sheets = new Google_Service_Sheets($client);
 
@@ -48,6 +49,7 @@
           $values[$existing][8] = "";
           $values[$existing][9] = "";
           $values[$existing][10] = "";
+          $values[$existing][11] = "";
         }
 
 
@@ -60,6 +62,7 @@
           $values[$_POST['slotno']][8] = $_POST['email'];
           $values[$_POST['slotno']][9] = $_POST['grade'];
           $values[$_POST['slotno']][10] = $_POST['major'];
+          $values[$_POST['slotno']][11] = $_POST['beatbox'];
 
         // Post Update to Google Drive
           array_unshift($values,$hrow); // Put Header Back On
@@ -83,8 +86,37 @@
 
   // Step 6 : Return Appointment
     if (isset($_POST['slotno'])){
-        $date = $values[$_POST['slotno']][0]." from ".$values[$_POST['slotno']][1]." to ".$values[$_POST['slotno']][2];
+        $date = $values[$_POST['slotno']+1][0]." from ".$values[$_POST['slotno']+1][1]." to ".$values[$_POST['slotno']+1][2];
         $data = '{"Success":"'.$_POST['slotno'].'", "DateString" : "'.$date.'"}';
+
+        // Step 6B : Send E-Mail
+            // Fetching Values from URL.
+              $email = $_POST['email'];
+              $email = filter_var($email, FILTER_SANITIZE_EMAIL); // Sanitizing E-mail.
+
+            // After sanitization Validation is performed
+              $subject = $group_name." A Cappella Audition";
+
+            // To send HTML mail, the Content-type header must be set.
+              $headers = 'MIME-Version: 1.0' . "\r\n";
+              $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+              $headers .= 'From:contact@cmuacappella.org\r\n'; // Sender's Email
+              $headers .= 'Reply-to:' . $reply_email . "\r\n"; // Sender's Email
+
+              $template = '<div style="padding:50px;"><br/>'
+              . $email_message  . '<br/>'
+              . $url_root . $hash .'<br/>'
+              . '<br/>'
+              . '</div>';
+
+              $sendmessage = "<div>" . $template . "</div>";
+
+            // Message lines should not exceed 70 characters (PHP rule), so wrap it.
+              $sendmessage = wordwrap($sendmessage, 70);
+
+            // Send mail by PHP Mail Function.
+              mail($email, $subject, $sendmessage, $headers,'-fcontact@cmuacappella.org');
+
     }
     else{
       if ($existing == 1)
@@ -101,10 +133,8 @@
       $error = '{"Failed":"Malformed request. "}';
     }
 
-  // Step 9 : Send E-Mail
 
-
-  // Step 10 : Output Data
+  // Step 8 : Output Data
     if (isset($error)) {
       echo $error;
     }
