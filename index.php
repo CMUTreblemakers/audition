@@ -1,10 +1,15 @@
+<?php
+  require "./config.php";
+  require "group/conf.php";
+?>
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
       <!-- META -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title></title>
+      <title><?php echo $group_name; ?> - Audition</title>
+      <link rel="shortcut icon" href="favicon.ico" />
 
       <!-- UIKit -->
       <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -21,7 +26,7 @@
    <!-- Step 1 : Autofill Data from AndrewID -->
      <section class="audition-autofill">
        <div class="logo-block uk-width-medium-1-2 uk-container-center">
-         <center><a href="."><img src="img/logo.png" /></a></center>
+         <center><a href="."><img src="group/logo.png" /></a></center>
          <form id="autofill-andrew" class=" uk-form">
             <div class="uk-form-row"><input type="text" placeholder="AndrewID"></div>
         </form>
@@ -42,6 +47,7 @@
                 $("#audition-form input[name=email]").val(result.preferred_email);
                 $("#audition-form input[name=grade]").val(result.student_class);
                 $("#audition-form input[name=major]").val(result.department);
+                $("#audition-form input[name=beatbox]").val(result.beatbox);
 
                 // Transition Away
                 $(".audition-autofill").fadeOut();
@@ -56,11 +62,12 @@
     <!-- Step 2 : Display Form Data -->
     <section class="audition-form" style="display:none;">
       <div class="logo-block uk-width-medium-1-2 uk-container-center">
-        <center><a href="."><img src="img/logo.png" /></a></center>
-        <form id="audition-form" class=" uk-form">
+        <center><a href="."><img src="group/logo.png" /></a></center>
+        <form id="audition-form" class="uk-form">
            <div class="uk-form-row"><input name="andrewid" type="text" placeholder="AndrewID" style="width:100%;"></div>
            <div class="uk-form-row"><input name="first" type="text" placeholder="First Name" style="width:48%;float: left;"><input name="last" type="text" placeholder="Last Name" style="width:48%; float:right;"></div>
            <div class="uk-form-row"><input name="email" type="text" placeholder="E-Mail" style="width:100%;"></div>
+           <div class="uk-form-row"><label for="beatbox">Do you wish to audition as a beatboxer?</label><input id="beatbox" name="beatbox" type="checkbox" /></input></div>
            <div class="uk-form-row"><center><button class="uk-button uk-button-large">Schedule an Audition</button></center></div>
            <input name="grade" type="hidden">
            <input name="major" type="hidden">
@@ -83,7 +90,6 @@
            <ul class="audition-view">
             <?php
 
-                  require "./config.php";
 
                   // Get Calendar Listing
                   $sheets = new Google_Service_Sheets($client);
@@ -183,7 +189,7 @@
     <!-- Step 4 : Goodbye Message -->
       <section class="audition-goodbye" style="display:none;">
         <div class="logo-block uk-width-medium-1-2 uk-container-center">
-          <center><a href="."><img src="img/logo.png" /></a></center>
+          <center><a href="."><img src="group/logo.png" /></a></center>
           <div class="uk-text-bold uk-text-center"> You have been scheduled for an audition on </div>
           <div id="goodbye-date" class="uk-text-center uk-text-large" style="font-size:36px; line-height:60px;"></div>
           <div class="uk-text-bold">You have been emailed a link allowing you to cancel or reschedule your audition.  If you have any questions, feel free to ask.</div>
