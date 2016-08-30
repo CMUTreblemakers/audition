@@ -101,7 +101,7 @@
               $headers = 'MIME-Version: 1.0' . "\r\n";
               $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
               $headers .= 'From:contact@cmuacappella.org\r\n'; // Sender's Email
-              $headers .= 'Reply-to:' . $reply_email . "\r\n"; // Sender's Email
+              $headers .= 'Reply-To:' . $reply_email . "\r\n"; // Reply to email set
 
               $template = '<div style="padding:50px;"><br/>'
               . $email_message  . '<br/>'
