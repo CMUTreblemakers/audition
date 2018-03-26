@@ -28,6 +28,9 @@
        <div class="logo-block uk-width-medium-1-2 uk-container-center">
          <center><a href="."><img src="group/logo.png" /></a></center>
          <form id="autofill-andrew" class=" uk-form">
+            <?php if(isset($_GET['access_code'])) : ?>
+               <div class="uk-form-row">Nice to see you again! Please re-enter your Andrew ID for verification.</div>
+            <?php endif; ?>
             <div class="uk-form-row"><input type="text" placeholder="AndrewID"></div>
         </form>
       </div>
